@@ -1,4 +1,4 @@
-let status = "ta fodidafa";
+let status = "aprovada";
 
 switch (status) {
   case "aprovada":

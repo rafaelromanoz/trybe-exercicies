@@ -1,11 +1,13 @@
-let valor = 0
+let angulo1 = 60;
+let angulo2 = 60;
+let angulo3 = 60;
 
-if(valor>0){
-    console.log('positive')
+if (angulo1+angulo2+angulo3==180){
+    console.log('true')
 }
-else if(valor<0){
-    console.log('negative')
+else if(angulo1+angulo2+angulo3 !==180 && angulo1+angulo2+angulo3 >=0){
+    console.log('false')
 }
 else{
-    console.log('zero')
+    console.log('inválido')
 }
