@@ -4,7 +4,16 @@ let soma=0;
 for (contador =0;contador<numbers.length;contador+=1){
     soma +=numbers[contador]
 
-    
+   
     
 }
+let media=soma/numbers.length
+
+if(media>20){
+    console.log('Valor maior que 20')
+}
+else{
+    console.log('Valor menor que 20')
+}
+
 
