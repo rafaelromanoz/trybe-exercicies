@@ -1,0 +1,6 @@
+criarArray=[1]
+
+for(index=0;index<24;index+=1){
+  criarArray.push(criarArray[index]+1)
+}
+console.log(criarArray)
