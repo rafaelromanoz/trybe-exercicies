@@ -40,6 +40,23 @@
     </div>
     <script>
         document.getElementsByTagName('p')[1].innerText='Deu certo'; 
+        document.getElementsByClassName('main-content')[0].style.backgroundColor='rgb(76,164,109)';
+        document.getElementsByClassName('center-content')[0].style.backgroundColor='white';
+        document.getElementsByClassName('center-content')[0].style.backgroundColor='white';
+        document.getElementsByTagName('h1')[0].innerText='Exercício 5.1 - JavaScript';
+     
+        let maiuscula=document.getElementsByTagName('p');
+        for(let index=0;index<maiuscula.length;index+=1){
+            maiuscula[index].style.textTransform = "uppercase";
+        }
+        
+        for(let index2=0;index2<maiuscula.length;index2+=1){
+            console.log(maiuscula[index2].innerText);
+        }
+
+
+
+        
     </script>
   </body>
 </html>
