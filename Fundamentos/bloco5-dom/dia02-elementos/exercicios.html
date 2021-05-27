@@ -57,11 +57,31 @@
   </head>
   <body>
     <script>
+    // Exercicio 1 :Adicione a tag h1 com o texto Exercício 5.2 - JavaScript DOM como filho da tag body ;
+
       let body=document.querySelector('body');
       let h1=document.createElement('h1');
       h1.innerText="Exercício 5.2 - JavaScript DOM";
       body.appendChild(h1)
-      console.log(body)
+
+    //Exercicio 2:Adicione a tag div com a classe main-content como filho da tag body ;
+
+    let div=document.createElement('div')
+    div.className='main-content';
+
+    body.appendChild(div)
+
+    //Exercicio 3:Adicione a tag div com a classe center-content como filho da tag div criada no passo 2;
+
+    let div2=document.createElement('div')
+    div2.className='center-content';
+
+    div.appendChild(div2)
+
+    // Exercicio 4:Adicione a tag p como filho do div criado no passo 3 e coloque algum texto;
+
+
+    
       
     </script>
   </body>
