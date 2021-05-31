@@ -38,7 +38,7 @@ function linkWeb(){
 }
 
 let titul=document.querySelector('h1')
-console.log(titul)
+
 
 divUm.addEventListener("click",classChange);
 divDois.addEventListener("click",classChange);
