@@ -151,7 +151,7 @@ addDiv();
 //exercicio 9 fazendo função de adicionar e remover classe selected clicando;
 
 function setTaskClass() {
-  let selectedTask = document.getElementsByClassName('task selected');
+  let selectedColor = document.getElementsByClassName('color selected');
   let myTasks = document.querySelector('.task');
 
   myTasks.addEventListener('click', function(event) {
@@ -186,4 +186,37 @@ function setDayColor() {
 };
 
 setDayColor();
+
+/*Bônus:
+Vamos adicionar compromissos ao seu calendário? Implemente uma função que, ao digitar um compromisso na caixa de texto "COMPROMISSOS", adiciona o item à lista "MEUS COMPROMISSOS" ao clicar no botão "ADICIONAR".
+Se nenhum caractere for inserido no campo input , a função deve retornar um alert com uma mensagem de erro ao clicar em "ADICIONAR".
+Ao pressionar a tecla "enter" o evento também deverá ser disparado.
+Dica - Propriedade: keyCode . */
+
+const input=document.querySelector('#task-input');
+
+const buttonAdd=document.getElementById('btn-add');
+
+const taskUl=document.querySelector('.task-list');
+
+function verificaCaractere(event){
+  if(input.value===''){
+
+    return alert("Não tem nada escrito!");
+  }
+  input.addEventListener()
+   const valor=input.value;
+   const li=document.createElement('li');
+   li.innerText="Novo compromisso : "+valor;
+   taskUl.appendChild(li)
+  
+}
+
+buttonAdd.addEventListener("click",verificaCaractere);
+
+
+
+
+
+
 
