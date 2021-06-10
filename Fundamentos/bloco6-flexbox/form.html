@@ -6,6 +6,7 @@
   </head>
   <body>
     <fieldset>
+        <form action="" method="GET">
       <label for="nome-user"
         >Nome:
         <input
@@ -20,7 +21,7 @@
       <label for="email-user"
         >E-mail:
         <input
-          type="email"
+          type="text"
           name="user-email"
           id="email-user"
           maxlength="50"
@@ -73,8 +74,15 @@
       /></label>
     </fieldset>
     <fieldset>
-      <form action=""></form>
+      <label for="resumo-curriculo">Resumo do currículo: <textarea type="textarea" maxlength="400" name="resumo-curriculo" id="resumo-curriculo" required></textarea>
+      <label for="cargo-text">Cargo:<input type="text" id="cargo-text" maxlength="40" required></label>
+      <br>
+      <label for="descricao-cargo-text">Descrição Cargo:<input type="text" id="descricao-cargo-text" maxlength="500" required></label>
+      <label for="data">Data de Inicio: <input type="text" id="data" value=""></label>
+      <input type="submit" id="submit">
+      <input type="reset">Resetar
     </fieldset>
+</form>
   </body>
   <script src="script.js"></script>
 </html>

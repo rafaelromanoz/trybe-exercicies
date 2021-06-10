@@ -1,4 +1,8 @@
 const selected = document.querySelector("#selected");
+const submit=document.querySelector('#submit')
+
+
+
 
 const states  = [
     { value: 'AC', label: 'Acre' },
@@ -34,7 +38,6 @@ const states  = [
 function createOptions() {
   for (let index in states) {
     let option = document.createElement("option");
-    console.log(states[index].label)
     option.innerText = states[index].label;
     option.value=states[index].value;
     selected.appendChild(option);
@@ -42,3 +45,22 @@ function createOptions() {
 }
 
 createOptions();
+
+
+
+
+function dateVerification(evt){
+    const dateInput=document.querySelector('#data').value;
+    const dateReg = /^\d{2}[./-]\d{2}[./-]\d{4}$/
+
+     if(dateInput.match(dateReg)){
+          alert ('Dados Corretos!')
+     }
+     else{
+        alert('Dados incorretos !')
+        evt.preventDefault();
+     }
+     
+}
+
+submit.addEventListener('click',dateVerification)
