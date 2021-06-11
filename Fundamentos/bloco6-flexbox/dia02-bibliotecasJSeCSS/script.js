@@ -43,54 +43,68 @@ function createOptions() {
 
 createOptions();
 
-var picker = new Pikaday({ field: document.getElementById("datepicker") });
-
+var picker = new Pikaday({
+  field: document.getElementById("datepicker"),
+  format: "D/M/YYYY",
+  toString(date, format) {
+    const day = date.getDate();
+    const month = date.getMonth() + 1;
+    const year = date.getFullYear();
+    return `${day}/${month}/${year}`;
+  },
+  parse(dateString, format) {
+    const parts = dateString.split("/");
+    const day = parseInt(parts[0], 10);
+    const month = parseInt(parts[1], 10) - 1;
+    const year = parseInt(parts[2], 10);
+    return new Date(year, month, day);
+  },
+});
 
 new window.JustValidate(".teste", {
   rules: {
     name: {
       required: true,
-      maxLength: 40
+      maxLength: 40,
     },
 
     email: {
       required: true,
-      maxLength: 50
+      maxLength: 50,
     },
 
     cpf: {
       required: true,
-      maxLength: 11
+      maxLength: 11,
     },
     endereco: {
       required: true,
-      maxLength: 200
+      maxLength: 200,
     },
-    cidade:{
-      required:true,
-      maxLength:28
+    cidade: {
+      required: true,
+      maxLength: 28,
     },
-    estado:{
-      required:true
+    estado: {
+      required: true,
     },
-    apartamento:{
-      required:true
+    apartamento: {
+      required: true,
     },
-    resumo:{
-      required:true,
-      maxLength:1000
+    resumo: {
+      required: true,
+      maxLength: 1000,
     },
-    cargo:{
-      required:true,
-      maxLength:40
+    cargo: {
+      required: true,
+      maxLength: 40,
     },
-    descricao:{
-      required:true,
-      maxLength:500
+    descricao: {
+      required: true,
+      maxLength: 500,
     },
-    date:{
-      required:true
-    }
-    
+    date: {
+      required: true,
+    },
   },
 });
