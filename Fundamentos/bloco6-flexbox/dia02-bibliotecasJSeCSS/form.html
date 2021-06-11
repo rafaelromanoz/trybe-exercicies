@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="bootstrap-5.0.1-dist/css/bootstrap.css">
+    <link rel="stylesheet" href="node_modules/pikaday/css/pikaday.css">
+    <link rel="stylesheet" href="style.css" />
+    <title>Formulário de currículo</title>
+</head>
+
+<body class="bg-light bg-gradient">
+
+
+    <!-- <fieldset class="shadow-sm p-3 mb-5 bg-body rounded"> -->
+        <h1 class="display heading text-center">Cadastro currículo</h1>
+        <form class="teste" action="" method="GET">
+            <div class="container">
+
+                <label class="form-label" for="nome-user">Nome:</label>
+                <input class="form-control" type="text" data-validate-field="name" name="name" id="nome-user"/>
+            </div>
+            <div class="container">
+                <label for="email-user" class="form-label">E-mail:</label>
+                <input class="form-control" type="text" data-validate-field="email" name="email" id="email-user"/>
+            </div>
+            <div class="container">
+                <label for="cpf-user" class="form-label">CPF:</label>
+                <input class="form-control" type="text" name="cpf" data-validate-field="cpf" id="cpf-user"/>
+            </div>
+            <div class="container">
+                <label for="endereco-user" class="form-label">Endereço:</label>
+                <input class="form-control" type="text" name="endereco" data-validate-field="endereco" id="endereco-user"/>
+            </div>
+
+            <div class="container">
+                <label for="cidade-user" class="form-label">Cidade:</label>
+                <input class="form-control" type="text" name="cidade" data-validate-field="cidade"id="cidade-user"/>
+            </div>
+            <div class="container">
+                <label for="" class="form-label">Estado:
+                    <select class="form-control" class="form-select" data-validate-field="estado" name="estado" id="selected"
+                        ></select></label>
+            </div>
+            <div class="container" >
+                Apartamento: <label class="form-check-label" for="casa"><input data-validate-field="apartamento" class="form-control form-check-input"
+                        type="radio" name="casa" id="casa" /></label>
+                Casa: <label class="form-check-label" for="apartamento"><input data-validate-field="apartamento" class="form-control form-check-input"
+                        type="radio" name="casa" id="apartamento" /></label>
+            </div>
+    <!-- </fieldset> -->
+    <!-- <fieldset class="shadow-sm p-3 mb-5 bg-body rounded"> -->
+        <div class="container">
+            <label for="resumo-curriculo" class="form-label">Resumo do currículo: </label> <textarea
+                class="form-control" data-validate-field="resumo" type="textarea"name="resumo" id="resumo-curriculo"
+                required></textarea>
+        </div>
+        <div class="container">
+            <label for="cargo-text">Cargo:</label><input class="form-control" data-validate-field="cargo" type="text" id="cargo-text" >
+        </div>
+        <div class="container">
+        <label for="descricao-cargo-text">Descrição Cargo:</label><input class="form-control" data-validate-field="descricao"  type="text"
+            id="descricao-cargo-text">
+        </div>
+        <div class="container">
+        <label for="data">Data de Inicio: <input class="form-control" type="text" data-validate-field="date" id="datepicker" value="">
+        </div>
+        <br>
+        <div class="container">
+        <input type="submit" class="btn btn-primary" id="submit">
+           
+        <input type="reset" class="btn btn-warning">
+    <!-- </fieldset> -->
+    </form>
+    <script src="node_modules/just-validate/dist/js/just-validate.js"></script>
+    <script src="node_modules/pikaday/pikaday.js"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>
