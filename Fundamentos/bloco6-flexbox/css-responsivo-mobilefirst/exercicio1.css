@@ -1,0 +1,49 @@
+body {
+  font-size: 22px;
+  margin: 40px;
+}
+h1 {
+  font-size: 1.5em;
+}
+h2 {
+    font-size: 20px;
+}
+
+img {
+  max-width: 100%;
+  margin: 10px 0 40px 0;
+}
+
+figure {
+  margin: 0;
+}
+p {
+  text-align: justify;
+}
+
+@media screen and (min-width: 768px) {
+  body {
+    background-color: aquamarine;
+    font-size: 25px;
+    margin: 15px;
+    
+  }
+  .teste{
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-around;
+  }
+  figure{
+      width: 40%;
+  }
+ 
+}
+
+@media screen and (max-width:1300px){
+    body{
+        background-color: burlywood;
+        font-size: 30px;
+        margin: 20px;
+    }
+
+}
