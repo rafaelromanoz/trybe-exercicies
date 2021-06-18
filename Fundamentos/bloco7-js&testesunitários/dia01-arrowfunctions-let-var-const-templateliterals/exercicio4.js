@@ -9,14 +9,14 @@
 // JavaScript;
 // HTML; ... #goTrybe".
 
-const skills=['Rafael','Romano','Oliveira'];
+const skills = ['Rafael', 'Romano', 'Oliveira'];
 
-const verificaString =(string,char)=> string.replace("x",char) ;
+const verificaString = (string, char) => string.replace('x', char);
 
 // console.log(verificaString('rafael de oliveira x','xablau'))
-const returnVerificiaString=verificaString('testando desafio x','xablau');
+const returnVerificiaString = verificaString('testando desafio x', 'xablau');
 
-const secondFuncao =(string,arrayOfSkills)=> `${string} ${arrayOfSkills.sort()}`
+const secondFuncao = (string, arrayOfSkills) =>
+  `${string} ${arrayOfSkills.sort()}`;
 
-console.log(secondFuncao(returnVerificiaString,skills));
-
+console.log(secondFuncao(returnVerificiaString, skills));
