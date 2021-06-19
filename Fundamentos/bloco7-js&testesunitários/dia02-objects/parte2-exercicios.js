@@ -18,11 +18,30 @@ const lesson3 = {
   turno: 'noite',
 };
 
-const adicionarTurnoManha = (obj,chave,value)=>{
-  obj[chave]=value;
+const adicionarTurnoManha = (obj, chave, value) => {
+  obj[chave] = value;
   return obj;
-}
+};
 
-adicionarTurnoManha(lesson2,'turno','manhã');
+adicionarTurnoManha(lesson2, 'turno', 'manhã');
 
-const mostrarKeys=(obj)
+const mostrarKeys = (obj) => Object.keys(obj);
+
+mostrarKeys(lesson1)
+
+const tamanhoObj = (obj) => Object.keys(obj).length;
+
+tamanhoObj(lesson1);
+
+
+const valuesObj = (obj) => Object.values(obj);
+
+console.table(valuesObj(lesson1));
+
+
+
+
+
+
+
+
