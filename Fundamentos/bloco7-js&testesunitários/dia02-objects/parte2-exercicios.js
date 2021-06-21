@@ -74,16 +74,14 @@ valorChave(lesson2, 2);
 
 const verificaChaveValor = (obj, chave, valor) => {
   let valores = Object.entries(obj);
-
+  console.log(valores)
   for (let key in valores) {
     const chaves = valores[key][0];
     const values = valores[key][1];
     if (chaves === chave && values === valor) {
       return true;
-    } else {
-      return false;
-    }
+    } return false;
   }
 };
 
-console.log(verificaChaveValor(lesson3, 'materia', 'Maria Clara'));
+verificaChaveValor(lesson3, 'materia', 'Maria Clara');
