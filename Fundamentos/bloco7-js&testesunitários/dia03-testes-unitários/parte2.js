@@ -1,9 +1,9 @@
 const assert = require('assert');
 
 const addOne = (arr) => {
-  let arrayNovo=[];
-  for (let index in arr){
-    arrayNovo.push(arr[index]+1)
+  let arrayNovo = [];
+  for (let index in arr) {
+    arrayNovo.push(arr[index] + 1);
   }
   return arrayNovo;
 };

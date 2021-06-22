@@ -5,9 +5,11 @@ function division(x, y) {
   return x / y;
 }
 
-division(1,0)
+division(1, 0);
 
 assert.strictEqual(division(10, 2), 5); // OK
-assert.throws(() => { division(10, 1); }, /^Error: parameter y must not be 0$/); // OK
+assert.throws(() => {
+  division(10, 1);
+}, /^Error: parameter y must not be 0$/); // OK
 
-assert.ok(false)
+assert.ok(false);
