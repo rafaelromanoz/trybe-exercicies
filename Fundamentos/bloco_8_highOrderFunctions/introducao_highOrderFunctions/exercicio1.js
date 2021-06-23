@@ -7,10 +7,9 @@ const newEmployees = () => {
   return employees;
 };
 const user = (param) => {
-  let string = param.toLowerCase();
-  let resultado = string.replace(' ', '_');
-  let email = { Nome: param, email: `${resultado}@trybe.com` };
+  const string = param.toLowerCase().replace(' ', '_');
+  const email = { Nome: param, email: `${string}@trybe.com` };
   return email;
 };
 
-console.log(newEmployees(user));
+console.log(newEmployees());
