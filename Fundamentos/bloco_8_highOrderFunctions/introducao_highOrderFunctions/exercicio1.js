@@ -1,8 +1,8 @@
-const newEmployees = () => {
+const newEmployees = (callback) => {
   const employees = {
-    id1: user('Rafael Romano'),
-    id2: user('Luiza Drumond'),
-    id3: user('Carla Paiva'),
+    id1: callback('Rafael Romano'),
+    id2: callback('Luiza Drumond'),
+    id3: callback('Carla Paiva'),
   };
   return employees;
 };
@@ -12,4 +12,4 @@ const user = (param) => {
   return email;
 };
 
-console.log(newEmployees());
+console.log(newEmployees(user));
