@@ -1,4 +1,4 @@
-const assert = require('assert');
+// const assert = require('assert');
 
 const books = [
   {
@@ -65,18 +65,19 @@ const books = [
 
 // Adicione o código do exercício aqui:
 
-const expectedResult = false;
+const expectedResult = [
+  'O Senhor dos Anéis',
+  'Fundação',
+  'O Chamado de Cthulhu',
+];
 
-function authorUnique() {
+function oldBooks() {
   // escreva seu código aqui
-  return books.every(
-    (valor) =>
-      !books.some(
-        (valorSome) =>
-          valorSome.author.birthYear === valor.author.birthYear &&
-          valorSome.author.name !== valor.author.name
-      )
-  );
+  return books
+    .filter((book) => 2021 - book.releaseYear > 60)
+    .map((name) => name.name);
 }
 
-assert.strictEqual(authorUnique(), expectedResult);
+console.log(oldBooks());
+
+// assert.deepStrictEqual(oldBooks(), expectedResult);

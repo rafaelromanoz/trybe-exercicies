@@ -65,18 +65,18 @@ const books = [
 
 // Adicione o código do exercício aqui:
 
-const expectedResult = false;
+const expectedResult = 'O Senhor dos Anéis';
 
-function authorUnique() {
+function authorWith3DotsOnName() {
   // escreva seu código aqui
-  return books.every(
-    (valor) =>
-      !books.some(
-        (valorSome) =>
-          valorSome.author.birthYear === valor.author.birthYear &&
-          valorSome.author.name !== valor.author.name
-      )
-  );
+  return books
+    .filter(
+      (elemento) =>
+        elemento.author.name[1] === '.' &&
+        elemento.author.name[4] === '.' &&
+        elemento.author.name[7] === '.'
+    )
+    .map((name) => name.name).toString();
 }
 
-assert.strictEqual(authorUnique(), expectedResult);
+assert.deepStrictEqual(authorWith3DotsOnName(), expectedResult);

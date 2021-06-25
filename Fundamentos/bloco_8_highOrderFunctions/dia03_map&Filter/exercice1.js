@@ -65,18 +65,21 @@ const books = [
 
 // Adicione o código do exercício aqui:
 
-const expectedResult = false;
+const expectedResult = [
+  'As Crônicas de Gelo e Fogo - Fantasia - George R. R. Martin',
+  'O Senhor dos Anéis - Fantasia - J. R. R. Tolkien',
+  'Fundação - Ficção Científica - Isaac Asimov',
+  'Duna - Ficção Científica - Frank Herbert',
+  'A Coisa - Terror - Stephen King',
+  'O Chamado de Cthulhu - Terror - H. P. Lovecraft',
+];
 
-function authorUnique() {
+function formatedBookNames() {
   // escreva seu código aqui
-  return books.every(
-    (valor) =>
-      !books.some(
-        (valorSome) =>
-          valorSome.author.birthYear === valor.author.birthYear &&
-          valorSome.author.name !== valor.author.name
-      )
+  return books.map(
+    (elemento) =>
+      `${elemento.name} - ${elemento.genre} - ${elemento.author.name}`
   );
 }
 
-assert.strictEqual(authorUnique(), expectedResult);
+assert.deepStrictEqual(formatedBookNames(), expectedResult);

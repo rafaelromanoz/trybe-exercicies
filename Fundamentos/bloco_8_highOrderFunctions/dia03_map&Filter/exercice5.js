@@ -65,18 +65,20 @@ const books = [
 
 // Adicione o código do exercício aqui:
 
-const expectedResult = false;
+const expectedResult = [
+  'Frank Herbert',
+  'George R. R. Martin',
+  'Isaac Asimov',
+  'J. R. R. Tolkien',
+];
 
-function authorUnique() {
+function fantasyOrScienceFictionAuthors() {
   // escreva seu código aqui
-  return books.every(
-    (valor) =>
-      !books.some(
-        (valorSome) =>
-          valorSome.author.birthYear === valor.author.birthYear &&
-          valorSome.author.name !== valor.author.name
-      )
-  );
+  return books
+    .filter(
+      (book) => book.genre === 'Ficção Científica' || book.genre === 'Fantasia'
+    )
+    .map((name) => name.author.name).sort();
 }
 
-assert.strictEqual(authorUnique(), expectedResult);
+assert.deepStrictEqual(fantasyOrScienceFictionAuthors(), expectedResult);
