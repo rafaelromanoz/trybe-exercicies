@@ -65,21 +65,18 @@ const books = [
 
 // Adicione o código do exercício aqui:
 
-const expectedResult = [
-  'As Crônicas de Gelo e Fogo - Fantasia - George R. R. Martin',
-  'O Senhor dos Anéis - Fantasia - J. R. R. Tolkien',
-  'Fundação - Ficção Científica - Isaac Asimov',
-  'Duna - Ficção Científica - Frank Herbert',
-  'A Coisa - Terror - Stephen King',
-  'O Chamado de Cthulhu - Terror - H. P. Lovecraft',
-];
+const expectedResult = 'O Senhor dos Anéis';
 
-function formatedBookNames() {
+function authorWith3DotsOnName() {
   // escreva seu código aqui
-  return books.map(
-    (elemento) =>
-      `${elemento.name} - ${elemento.genre} - ${elemento.author.name}`
-  );
+  return books
+    .filter(
+      (elemento) =>
+        elemento.author.name[1] === '.' &&
+        elemento.author.name[4] === '.' &&
+        elemento.author.name[7] === '.'
+    )
+    .map((name) => name.name).toString();
 }
 
-assert.deepStrictEqual(formatedBookNames(), expectedResult);
+assert.deepStrictEqual(authorWith3DotsOnName(), expectedResult);

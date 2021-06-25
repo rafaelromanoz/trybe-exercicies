@@ -1,4 +1,4 @@
-const assert = require('assert');
+// const assert = require('assert');
 
 const books = [
   {
@@ -66,20 +66,18 @@ const books = [
 // Adicione o código do exercício aqui:
 
 const expectedResult = [
-  'As Crônicas de Gelo e Fogo - Fantasia - George R. R. Martin',
-  'O Senhor dos Anéis - Fantasia - J. R. R. Tolkien',
-  'Fundação - Ficção Científica - Isaac Asimov',
-  'Duna - Ficção Científica - Frank Herbert',
-  'A Coisa - Terror - Stephen King',
-  'O Chamado de Cthulhu - Terror - H. P. Lovecraft',
+  'O Senhor dos Anéis',
+  'Fundação',
+  'O Chamado de Cthulhu',
 ];
 
-function formatedBookNames() {
+function oldBooks() {
   // escreva seu código aqui
-  return books.map(
-    (elemento) =>
-      `${elemento.name} - ${elemento.genre} - ${elemento.author.name}`
-  );
+  return books
+    .filter((book) => 2021 - book.releaseYear > 60)
+    .map((name) => name.name);
 }
 
-assert.deepStrictEqual(formatedBookNames(), expectedResult);
+console.log(oldBooks());
+
+// assert.deepStrictEqual(oldBooks(), expectedResult);
