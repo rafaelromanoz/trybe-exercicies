@@ -65,13 +65,14 @@ const books = [
 
 // Adicione o código do exercício aqui:
 
+const expectedResult = "George R. R. Martin, J. R. R. Tolkien, Isaac Asimov, Frank Herbert, Stephen King, H. P. Lovecraft.";
 
-function authorBornIn1947() {
-  // escreva aqui o seu código
-  return  books.find((book)=>{
-     book.author.birthYear===1947   
-  })
-}
+const reduceNames=books.reduce((acumulador,currentValue,index,array)=>{
+  if(array.length-1 ===index){
+   return `${acumulador} ${currentValue.author.name}.`
+  }
+  return (`${acumulador} ${currentValue.author.name},`).trim()
+},'')
 
+assert.strictEqual(reduceNames, expectedResult);
 
-assert.strictEqual(authorBornIn1947(), 'Stephen King');

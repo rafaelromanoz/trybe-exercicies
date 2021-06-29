@@ -65,13 +65,16 @@ const books = [
 
 // Adicione o código do exercício aqui:
 
+const expectedResult = 43;
 
-function authorBornIn1947() {
-  // escreva aqui o seu código
-  return  books.find((book)=>{
-     book.author.birthYear===1947   
-  })
+function averageAge() {
+  // escreva seu código aqui
+   let somaIdades= books.map((number)=> number.releaseYear-number.author.birthYear)
+  .reduce((acumulador,valoratual,index,array)=> (acumulador+valoratual))
+
+  return somaIdades/books.length
 }
 
+console.log(averageAge())
 
-assert.strictEqual(authorBornIn1947(), 'Stephen King');
+assert.strictEqual(averageAge(), expectedResult);
