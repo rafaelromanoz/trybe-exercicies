@@ -65,13 +65,29 @@ const books = [
 
 // Adicione o código do exercício aqui:
 
+const expectedResult = {
+  id: 1,
+  name: 'As Crônicas de Gelo e Fogo',
+  genre: 'Fantasia',
+  author: {
+    name: 'George R. R. Martin',
+    birthYear: 1948,
+  },
+  releaseYear: 1991,
+};
 
-function authorBornIn1947() {
-  // escreva aqui o seu código
-  return  books.find((book)=>{
-     book.author.birthYear===1947   
+function longestNamedBook() {
+  // escreva seu código aqui
+  return books.reduce((acumulador,currentValue)=>{
+   if(currentValue.name.length < acumulador.name.length){
+     return acumulador
+   }
+   return currentValue
   })
+
+
 }
 
+console.log(longestNamedBook())
+assert.deepStrictEqual(longestNamedBook(), expectedResult);
 
-assert.strictEqual(authorBornIn1947(), 'Stephen King');
