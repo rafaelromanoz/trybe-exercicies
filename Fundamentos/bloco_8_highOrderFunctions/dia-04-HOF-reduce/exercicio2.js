@@ -71,7 +71,7 @@ const reduceNames=books.reduce((acumulador,currentValue,index,array)=>{
   if(array.length-1 ===index){
    return `${acumulador} ${currentValue.author.name}.`
   }
-  return (`${acumulador} ${currentValue.author.name},`).trim()
+  return (`${acumulador} ${currentValue.author.name},`)
 },'')
 
 assert.strictEqual(reduceNames, expectedResult);

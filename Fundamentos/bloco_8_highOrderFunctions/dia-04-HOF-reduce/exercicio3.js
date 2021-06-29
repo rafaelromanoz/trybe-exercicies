@@ -67,13 +67,23 @@ const books = [
 
 const expectedResult = 43;
 
-function averageAge() {
-  // escreva seu código aqui
-   let somaIdades= books.map((number)=> number.releaseYear-number.author.birthYear)
-  .reduce((acumulador,valoratual,index,array)=> (acumulador+valoratual))
+// function averageAge() {
+//   // escreva seu código aqui
+//    let somaIdades= books.map((number)=> number.releaseYear-number.author.birthYear)
+//   .reduce((acumulador,valoratual)=> (acumulador+valoratual))
 
-  return somaIdades/books.length
+//   return somaIdades/books.length
+// }
+
+function averageAge(){
+  let somaIdades=books.reduce((acc,actualBook)=>(
+    acc + actualBook.releaseYear-actualBook.author.birthYear),0
+  )
+  return somaIdades / books.length
+
 }
+
+
 
 console.log(averageAge())
 
