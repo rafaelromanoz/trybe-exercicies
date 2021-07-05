@@ -5,7 +5,7 @@ const notes = [[9, 8, 10, 7, 5], [10, 9, 9, 10, 8], [10, 7, 10, 8, 9]];
 
 function studentAverage() {
   const nameAndAverage = students.map((student, index) => ({
-    name: student,
+    student,
     average: (notes[index].reduce((acc, curr) => acc + curr, 0) / notes[index].length),
   }));
   return nameAndAverage;
