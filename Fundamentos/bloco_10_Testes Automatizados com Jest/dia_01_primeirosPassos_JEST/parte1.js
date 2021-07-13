@@ -42,7 +42,7 @@ function myFizzBuzz(num) {
   if (num % 5 === 0) return 'buzz';
   return num;
 }
-
+console.log(myFizzBuzz(7))
 //funcao 5
 
 const obj1 = {
