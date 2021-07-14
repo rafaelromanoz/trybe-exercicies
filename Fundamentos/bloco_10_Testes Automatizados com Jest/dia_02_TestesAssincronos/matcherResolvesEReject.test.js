@@ -10,16 +10,18 @@ describe('Testando promise - findAnimalsByType', () => {
       const listDogs = [
         { name: 'Dorminhoco', age: 1, type: 'Dog' },
         { name: 'Soneca', age: 2, type: 'Dog' },
-      ]
+      ];
       expect.assertions(1);
-      return expect(getListAnimals('Dog')).resolves.toEqual(listDogs)
+      return expect(getListAnimals('Dog')).resolves.toEqual(listDogs);
     });
   });
 
   describe('Quando o tipo de animal não existe', () => {
     test('Retorna um erro', () => {
       expect.assertions(1);
-      return expect(getListAnimals('Lion')).rejects.toEqual({ error: 'Não possui esse tipo de animal.' })
+      return expect(getListAnimals('Lion')).rejects.toEqual({
+        error: 'Não possui esse tipo de animal.',
+      });
     });
   });
 });
@@ -32,16 +34,18 @@ describe('Testando Async/Await - findAnimalsByType', () => {
       const listDogs = [
         { name: 'Dorminhoco', age: 1, type: 'Dog' },
         { name: 'Soneca', age: 2, type: 'Dog' },
-      ]
+      ];
       expect.assertions(1);
-      await expect(getListAnimals('Dog')).resolves.toEqual(listDogs)
+      await expect(getListAnimals('Dog')).resolves.toEqual(listDogs);
     });
   });
 
   describe('Quando o tipo de animal não existe', () => {
     test('Retorna um erro', async () => {
       expect.assertions(1);
-      await expect(getListAnimals('Lion')).rejects.toEqual({ error: 'Não possui esse tipo de animal.' })
+      await expect(getListAnimals('Lion')).rejects.toEqual({
+        error: 'Não possui esse tipo de animal.',
+      });
     });
   });
 });

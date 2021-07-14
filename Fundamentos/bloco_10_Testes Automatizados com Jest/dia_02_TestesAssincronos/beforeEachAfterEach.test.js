@@ -7,13 +7,13 @@ afterEach(() => {
   resetCities();
 });
 
-it("should have only 1 city after remove Belo Horizonte", () => {
-  removeCity("Belo Horizonte");
+it('should have only 1 city after remove Belo Horizonte', () => {
+  removeCity('Belo Horizonte');
   expect(getCities().length).toBe(1);
 });
 
-it("should have the city of Belo Horizonte", () => {
-  expect(isCity("Belo Horizonte")).toBeTruthy();
+it('should have the city of Belo Horizonte', () => {
+  expect(isCity('Belo Horizonte')).toBeTruthy();
 });
 
 describe('Requesting cities from api', () => {
@@ -27,16 +27,16 @@ describe('Requesting cities from api', () => {
     resetCities();
   });
 
-  it("should have 8 cities after request", () => {
+  it('should have 8 cities after request', () => {
     let cities = getCities();
     expect(cities.length).toBe(8);
   });
 
-  it("should have the city of Belo Horizonte", () => {
-    expect(isCity("Belo Horizonte")).toBeTruthy();
+  it('should have the city of Belo Horizonte', () => {
+    expect(isCity('Belo Horizonte')).toBeTruthy();
   });
 
-  it("should have the city of Fortaleza", () => {
-    expect(isCity("Fortaleza")).toBeTruthy();
+  it('should have the city of Fortaleza', () => {
+    expect(isCity('Fortaleza')).toBeTruthy();
   });
 });

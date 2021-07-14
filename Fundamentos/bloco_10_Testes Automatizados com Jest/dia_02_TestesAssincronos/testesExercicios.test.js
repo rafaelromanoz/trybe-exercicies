@@ -1,4 +1,4 @@
-const { uppercase, getUserName, getRepos } = require('./funcoesExercicios');
+const { uppercase, getUserName, getRepos, split, getAnimal,getAnimalByAge } = require('./funcoesExercicios');
 
 test('Testando a uppercase', (done) => {
   uppercase('rafael', (str) => {
@@ -6,7 +6,12 @@ test('Testando a uppercase', (done) => {
     done();
   });
 });
-
+test ('testando função criada',(done) => {
+  split('rafael romano',(callback) => {
+    expect(callback).toEqual(['rafael','romano']);
+    done();
+  })
+})
 describe('Testando exercicio 2 e 3', () => {
   it('quando o id existe', () => {
     expect.assertions(1);
@@ -32,10 +37,9 @@ describe('Testando exercicio 2 e 3', () => {
     }
   });
 });
-
 describe('Testando exercicio 4', () => {
   it('Verificando se tem tal coisa aqui', async () => {
-    const trabTrybe = await getRepos(
+    const trabTrybe = await getRepos (
       'https://api.github.com/orgs/tryber/repos'
     );
     const verificaPrimeiroId = trabTrybe.some(
@@ -48,3 +52,43 @@ describe('Testando exercicio 4', () => {
     expect(verificaSegundoId).toBe(true);
   });
 });
+
+
+describe('Testando promise - findAnimalByName', () => {
+  describe('Quando existe o animal com o nome procurado', () => {
+    test('Retorne o objeto do animal', () => {
+      expect.assertions(1);
+      return getAnimal('Dorminhoco').then(animal => {
+        expect(animal).toEqual({ name: 'Dorminhoco', age: 1, type: 'Dog' });
+      });
+    });
+  });
+
+  describe('Quando não existe o animal com o nome procurado', () => {
+    test('Retorna um erro', () => {
+      expect.assertions(1);
+      return getAnimal('Bob').catch(error =>
+        expect(error).toEqual('Nenhum animal com esse nome!')
+      );
+    });
+  });
+});
+
+describe('Testando promise-findAnimalByAge',() => {
+  it('Retorne um array com o objeto com animal especificado', ()=> {
+    expect.assertions(1);
+    return getAnimalByAge(2).then((animal)=> {
+      expect(animal).toEqual([{ name: 'Soneca', age: 2, type: 'Dog' }])
+    })
+  })
+})
+
+describe('Quando não existe o animal',() => {
+  it('Retorne um array com o objeto com animal especificado', ()=> {
+    expect.assertions(1);
+    return getAnimalByAge(55).catch((error)=> {
+      expect(error).toEqual('Nenhum animal com essa idade')
+    })
+  })
+})
+
