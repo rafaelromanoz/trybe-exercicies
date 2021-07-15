@@ -86,7 +86,7 @@ describe('Testando promise-findAnimalByAge',() => {
 describe('Quando não existe o animal',() => {
   it('Retorne um array com o objeto com animal especificado', ()=> {
     expect.assertions(1);
-    return getAnimalByAge(55).catch((error)=> {
+    return getAnimalByAge(2).catch((error)=> {
       expect(error).toEqual('Nenhum animal com essa idade')
     })
   })
