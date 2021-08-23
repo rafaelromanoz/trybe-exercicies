@@ -1,8 +1,16 @@
-import { render, screen } from '@testing-library/react';
+// App.test.js
+import React from 'react';
+import { render, fireEvent } from '@testing-library/react'
 import App from './App';
+it('alterando o valor dos campos e testando o valor guardado', () => {
+  const { getByTestId } = render(<App />);
+  const inputNome = getByTestId('input-nome');
+  expect(inputNome).toHaveValue('');
+  fireEvent.change(inputNome, { target: { value: 'Estudante da Trybe' } });
+  expect(inputNome).toHaveValue('Estudante da Trybe');
 
-test('renders learn react link', () => {
-  render(<App />);
-  const linkElement = screen.getByText(/learn react/i);
-  expect(linkElement).toBeInTheDocument();
+  const inputEmail = getByTestId('input-email');
+  expect(inputEmail).toHaveValue('');
+  fireEvent.change(inputEmail, { target: { value: 'estudante@trybe.com' } });
+  expect(inputEmail).toHaveValue('estudante@trybe.com');
 });
