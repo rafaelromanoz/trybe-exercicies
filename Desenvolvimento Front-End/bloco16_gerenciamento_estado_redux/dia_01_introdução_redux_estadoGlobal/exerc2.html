@@ -51,6 +51,12 @@
 
       const meuSegundoReducer = (state = ESTADO_INICIAL_2, action) => {
         switch (action.type) {
+          case 'ALTERA_SEGUNDO_NOME':
+            return {
+              ...state,
+              nome: action.nome,
+              sobrenome: action.sobrenome,
+            };
           default:
             return state;
         }
@@ -69,17 +75,32 @@
         nome: nome,
         sobrenome: sobrenome,
       });
+      const alteraNome2 = (nome, sobrenome) => ({
+        type: 'ALTERA_SEGUNDO_NOME',
+        nome: nome,
+        sobrenome: sobrenome,
+      });
       window.onload = () => {
         setTimeout(() => {
           store.dispatch(alteraNome('Rafael', 'Romano'));
+          store.dispatch(alteraNome2('Vinicius', 'Pilantra'));
         }, 3000);
       };
       store.subscribe(() => {
         const { nome, sobrenome } = store.getState().meuPrimeiroReducer;
+        const blab = store.getState().meuPrimeiroReducer.nome;
+        console.log(blab);
         const span = document.querySelector('#nome-1');
         const span2 = document.querySelector('#sobrenome-1');
         span.innerHTML = nome;
-        span2.innerHTML= sobrenome;
+        span2.innerHTML = sobrenome;
+      });
+      store.subscribe(() => {
+        const { nome, sobrenome } = store.getState().meuSegundoReducer;
+        const span = document.querySelector('#nome-2');
+        const span2 = document.querySelector('#sobrenome-2');
+        span.innerHTML = nome;
+        span2.innerHTML = sobrenome;
       });
     </script>
   </body>
