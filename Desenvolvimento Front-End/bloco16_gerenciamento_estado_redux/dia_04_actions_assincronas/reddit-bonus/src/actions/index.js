@@ -1,7 +1,6 @@
 export const beginSearch = () => {
   return {
     type:'BEGIN_SEARCH',
-    loading: true,
   }
 }
 
