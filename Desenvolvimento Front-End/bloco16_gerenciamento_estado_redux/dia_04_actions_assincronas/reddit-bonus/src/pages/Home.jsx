@@ -7,6 +7,8 @@ class Home extends Component {
     super();
     this.state = {
       selecionado: 'reactjs',
+      email:'',
+      validarEmail:false,
     };
     this.handleChange = this.handleChange.bind(this);
   }
@@ -19,7 +21,7 @@ class Home extends Component {
     });
   }
   render() {
-    const { funcCall } = this.props;
+    const { fetchApi }=this.props
     const { selecionado } = this.state;
     return (
       <div>
@@ -32,13 +34,14 @@ class Home extends Component {
         <br />
         <p>{`Categoria selecionada: ${selecionado}`}</p>
         <br />
-        <Button onClick={() => funcCall(selecionado)}>Carregar</Button>
+        <Button onClick={() => fetchApi(selecionado)}>Carregar</Button>
       </div>
     );
   }
 }
 
-const mapDispatchToProps = (dispatch) => ({
-  funcCall: (obj) => dispatch(fetchApi(obj)),
-});
+const mapDispatchToProps = { fetchApi }
+// const mapDispatchToProps = (dispatch) => ({
+//   funcCall: (obj) => dispatch(fetchApi(obj)),
+// });
 export default connect(null, mapDispatchToProps)(Home);

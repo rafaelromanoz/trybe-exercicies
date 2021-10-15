@@ -2,10 +2,8 @@ const INITIAL_STATE = {
   user:'',
   email:'',
   logado: false,
-  usuarioCadastro:'',
-  emailCadastro:'',
-  idadeCadastro:0,
-  }
+  usuariosCadastradosSistema:[]
+}
 
 
 const usuarioLogin = (state = INITIAL_STATE, action) => {
@@ -20,9 +18,7 @@ const usuarioLogin = (state = INITIAL_STATE, action) => {
       case'CADASTRO_USUARIOS':
       return {
         ...state,
-        usuarioCadastro: action.payload.user,
-        emailCadastro:action.payload.email,
-        idadeCadastro:action.payload.idade,
+        usuariosCadastradosSistema: [...state.usuariosCadastradosSistema,action.payload]
       }
       default:
         return state;
