@@ -1,0 +1,24 @@
+use('pessoa');
+
+db.bios.find();
+
+db.bios.find({_id:5})
+
+db.bios.find( { "name.last": "Hopper" } )
+
+db.bios.find({}, { name: 1 })
+
+db.bios.find({},{ birth:1 }).limit(2)
+
+db.bios.find({_id:{$eq: 8}})
+
+db.bios.find({_id:{$eq: 8}},{_id:1, name:1})
+
+db.bios.find({_id:{$eq: 8}},{birth:1, name:1})
+
+db.bios.find({"name.first": "John"}).pretty()
+
+db.bios.find().limit(3)
+
+db.bios.find().limit(2).skip(5)
+
