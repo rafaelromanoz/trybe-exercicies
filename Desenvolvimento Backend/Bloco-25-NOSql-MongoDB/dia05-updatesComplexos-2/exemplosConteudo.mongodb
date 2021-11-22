@@ -1,0 +1,44 @@
+use("class");
+db.size.insertMany([
+  { _id: 1, tags: ["red", "green"] },
+{ _id: 2, tags: ["apple", "lime"] },
+{ _id: 3, tags: "fruit" },
+{ _id: 4, tags: ["orange", "lemon", "grapefruit"] }
+])
+
+use('class');
+db.size.find({
+  tags: {$size: 3}
+});
+
+
+use("class");
+db.expr.insertMany(
+  [
+    { _id: 1, category: "food", budget: 400, spent: 450 },
+{ _id: 2, category: "drinks", budget: 100, spent: 150 },
+{ _id: 3, category: "clothes", budget: 100, spent: 50 },
+{ _id: 4, category: "misc", budget: 500, spent: 300 },
+{ _id: 5, category: "travel", budget: 200, spent: 650 }
+  ]
+);
+
+use("class");
+db.expr.find(
+  {
+    $expr: { $gt: [ "$spent", "$budget" ] }
+  }
+);
+
+use("class");
+db.regex.insertMany(
+  [
+    { _id: 100, sku: "abc123", description: "Single line description." },
+    { _id: 101, sku: "abc789", description: "First line\nSecond line" },
+    { _id: 102, sku: "xyz456", description: "Many spaces before     line" },
+    { _id: 103, sku: "xyz789", description: "Multiple\nline description" }
+  ]
+);
+
+use("class");
+db.regex.find({ sku: { $regex: /789$/ } });
