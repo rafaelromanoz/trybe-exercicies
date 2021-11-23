@@ -1,0 +1,46 @@
+//para fixar
+use("class");
+db.transactions.aggregate(
+  [
+    {
+      $match: {
+        from: "Dave America"
+      }
+    }
+  ]
+);
+
+use("class");
+db.transactions.aggregate(
+  [
+    {
+      $match: {
+        $or: [
+          {value: {$gte: 700, $lte: 6000}},
+          {from: "Lisa Simpson"}
+        ]
+      }
+    }
+  ]
+);
+
+use("class");
+db.transactions.aggregate(
+  [
+    {
+      $match: {
+        value: {$gt: 1000}
+      },
+    },
+    {
+      $limit: 3
+    },
+    {
+      $project: {
+        value: 1,
+        _id: 0,
+        to: 1
+      }
+    }
+  ]
+);

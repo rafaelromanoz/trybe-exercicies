@@ -1,0 +1,86 @@
+use("class");
+db.sales.aggregate([
+  {
+    $group: {
+      _id: null,
+      count: { $sum: 1 }
+    }
+  }
+]);
+
+use("class");
+db.sales.aggregate([
+  {
+    $group : {
+      _id : "$item",
+      count: { $sum: 1}
+    }
+  }
+]);
+
+use("class");
+db.transactions.find();
+
+use("class");
+db.sales.aggregate([
+  {
+    $group : {
+      _id : "$item",
+      totalSaleAmount: {
+    $sum: {
+      $multiply: ["$price", "$quantity"]
+        }
+      }
+    }
+  }
+]);
+
+use("class");
+db.transactions.aggregate([
+  {$group: {
+    _id: "$bank",
+    bank: {$sum: 1}
+  }}
+]);
+
+use("class");
+db.transactions.aggregate([
+  {
+    $group: {
+      _id: "$bank",
+      total: {$sum: '$value'},
+      transações: {$sum: 1}
+    }
+  },
+]);
+
+use("class");
+db.transactions.aggregate([
+  {
+    $group: {
+      _id: "$bank",
+      total: {$sum: '$value'},
+    }
+  },
+]);
+
+use("class");
+db.transactions.aggregate([
+  {
+    $group: {
+      _id: "$bank",
+      total: {$sum: '$value'},
+    }
+  },
+  {
+    $match: {
+      total: {$gt: 1000}
+    }
+  }
+]);
+
+use("class");
+db.inventory.insertOne({ _id: 7, item: "ABC1", sizes: ["S", "M", "L"] });
+
+use("class");
+db.inventory.aggregate([{ $unwind : "$sizes" }]);
