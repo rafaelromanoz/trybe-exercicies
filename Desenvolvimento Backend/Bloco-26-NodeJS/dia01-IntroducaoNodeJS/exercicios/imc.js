@@ -22,5 +22,8 @@ const calculoImc = (peso, altura) => {
   }
 };
 
+const soma = () => 1 + 1;
+
+console.log(soma());
 console.log(`Com seu peso ${peso} e sua altura ${altura}, seu imc é ${calculoImc(peso,altura)}`);
 
