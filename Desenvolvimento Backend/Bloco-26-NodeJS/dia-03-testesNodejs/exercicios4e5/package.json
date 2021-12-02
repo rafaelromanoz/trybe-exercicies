@@ -1,0 +1,17 @@
+{
+  "name": "exercicios4e5",
+  "version": "1.0.0",
+  "description": "Exercicios 4 e 5",
+  "main": "exercicio4e5.test.js",
+  "scripts": {
+    "test": "mocha exercicio4e5.test.js"
+  },
+  "keywords": [],
+  "author": "Rafael",
+  "license": "ISC",
+  "devDependencies": {
+    "chai": "^4.3.4",
+    "mocha": "^9.1.3",
+    "sinon": "^12.0.1"
+  }
+}
