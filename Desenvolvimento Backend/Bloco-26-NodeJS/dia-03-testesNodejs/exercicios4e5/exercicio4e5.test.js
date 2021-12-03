@@ -20,10 +20,10 @@ describe('Testando função exercícios 4 e 5', () => {
     it('é uma string', () => {
       const respostaEscrita = escritaArquivo('./io-files/arquivoEscrita.txt', 'Ta ossada');
       expect(respostaEscrita).to.be.a('string');
-    })
+    });
     it('Foi escrito corretamente', () => {
       const respostaEscrita = escritaArquivo('./io-files/arquivoEscrita.txt', 'Ta ossada');
       expect(respostaEscrita).to.be.equal('Deu certo pae');
-    })
-  })
+    });
+  });
 });
