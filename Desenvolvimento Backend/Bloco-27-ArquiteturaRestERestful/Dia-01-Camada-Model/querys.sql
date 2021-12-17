@@ -1,0 +1,1 @@
+SELECT * FROM model_example.authors;
