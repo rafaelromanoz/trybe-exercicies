@@ -31,13 +31,13 @@ const create = async (firstName, lastName, email, password) => {
 
 const findUserById = async (id) => {
   try {
-    const allUsers = await connection().then((db) =>
+    const user = await connection().then((db) =>
       db.collection('users').findOne(ObjectId(id))
     );
-    if (!allUsers) return false;
-    return allUsers;
+    if (!user) return false;
+    return user;
   } catch (err) {
-    return { error: false };
+    return `o erro é ${err.message}`;
   }
 };
 
@@ -49,9 +49,26 @@ const getAllUsers = async () => {
   return allUsers;
 };
 
+const updateUser = async (id, firstName, lastName, email, password) => {
+  const novosValores = { $set: { firstName, lastName, email, password } };
+
+  try {
+    const user = await connection().then((db) =>
+      db.collection('users').findOne(ObjectId(id))
+    );
+    if (!user) return false;
+    await connection().then((db) =>
+      db.collection('users').updateOne({ _id: new ObjectId(id) }, novosValores)
+    );
+  } catch (err) {
+    return `o erro é ${err.message}`;
+  }
+};
+
 module.exports = {
   isValid,
   create,
   findUserById,
   getAllUsers,
+  updateUser,
 };
