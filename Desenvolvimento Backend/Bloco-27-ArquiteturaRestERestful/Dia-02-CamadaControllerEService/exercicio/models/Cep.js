@@ -15,12 +15,12 @@ const getAll = async () => {
 };
 
 const getCepFromApi = async (cep) => {
-  const {data} = await Axios.get(`https://viacep.com.br/ws/${cep}/json/`);
-  if(data.erro) return false;
+  const { data } = await Axios.get(`https://viacep.com.br/ws/${cep}/json/`);
+  if (data.erro) return false;
   return data;
-}
+};
 
-const create = async ({cep, logradouro, bairro, localidade, uf}) => {
+const create = async ({ cep, logradouro, bairro, localidade, uf }) => {
   await connection.execute(
     'INSERT INTO cep_lookup.ceps (cep, logradouro, bairro, localidade, uf) VALUES(?,?,?,?,?)',
     [cep, logradouro, bairro, localidade, uf]
@@ -38,5 +38,5 @@ module.exports = {
   getAddresByCep,
   create,
   getAll,
-  getCepFromApi
+  getCepFromApi,
 };

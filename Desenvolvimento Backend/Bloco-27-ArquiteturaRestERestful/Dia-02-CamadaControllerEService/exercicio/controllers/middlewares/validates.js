@@ -34,7 +34,6 @@ const validateExistingCep = async (req, res, next) => {
   const allCeps = await getAll();
   const correctCep = formatCep(cep);
   const cepFromApi = await getCepFromApi(cep);
-  console.log(cepFromApi);
   if (allCeps.some(({ cep }) => cep === correctCep))
     return next({ error: { code: 'Conflict', message: 'Cep já existente' } });
 
