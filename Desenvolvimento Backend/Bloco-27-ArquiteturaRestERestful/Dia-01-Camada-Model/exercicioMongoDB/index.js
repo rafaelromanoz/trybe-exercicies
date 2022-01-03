@@ -1,58 +1,45 @@
-const express = require('express');
+const { celebrate, Segments, Joi, errors } = require('celebrate');
 const bodyParser = require('body-parser');
-const Book = require('./model/User');
+const { create, getUserById, updateUserById } = require('./models/User');
+const validateBody = require('./middlewares/validateBody');
+const validateParams = require('./middlewares/validateParams');
+const ifExists = require('./middlewares/ifExists');
+const express = require('express');
+const midError = require('./middlewares/error');
+
 const app = express();
-app.use(bodyParser.json());
 const port = 3000;
+app.use(bodyParser.json());
 
-app.get('/user/:id', async (req, res) => {
-  const { id } = req.params;
-  if ((await Book.findUserById(id)) === false)
-    return res.status(404).json({ message: 'Usuário não encontrado' });
-  if (
-    (await Book.findUserById(id)) ===
-    'o erro é Argument passed in must be a string of 12 bytes or a string of 24 hex characters'
-  )
-    return res
-      .status(404)
-      .json({ message: 'Informe um id do tipo hexadecimal' });
-  res.status(200).json(await Book.findUserById(id));
-});
+app.post(
+  '/user',
+  celebrate({ [Segments.BODY]: validateBody }),
+  async (req, res) => {
+    const newObj = await create(req.body);
+    return res.status(201).json(newObj);
+  }
+);
 
-app.get('/user', async (_req, res) => {
-  res.status(200).json(await Book.getAllUsers());
-});
+app.get(
+  '/user/:id',
+  celebrate({
+    [Segments.PARAMS]: validateParams,
+  }),
+  ifExists,
+  async (req, res) => {
+    const { id } = req.params;
+    const result = await getUserById(id);
+    return res.status(200).json(result);
+  }
+);
 
-app.post('/user', async (req, res) => {
-  const { firstName, lastName, email, password } = req.body;
-  if (Book.isValid(firstName, lastName, email, password).error)
-    return res.status(400).json({
-      error: true,
-      message: `${Book.isValid(firstName, lastName, email, password).message}`,
-    });
-  res.status(201).json(await Book.create(firstName, lastName, email, password));
-});
+app.put('/user/:id', celebrate({ [Segments.PARAMS]: validateParams }), celebrate({ [Segments.BODY]: validateBody }), ifExists,
+  async (req, res) => {
+    const { id } = req.params;
+    await updateUserById(id, req.body);
+    return res.status(201).json({ message: 'Atualizado com sucesso' });
+  });
 
-app.put('/user/:id', async (req, res) => {
-  const { id } = req.params;
-  const { firstName, lastName, email, password } = req.body;
-  if ((await Book.updateUser(id)) === false)
-    return res.status(404).json({ message: 'usuário não encontrado' });
-  if (
-    (await Book.updateUser(id)) ===
-    'o erro é Argument passed in must be a string of 12 bytes or a string of 24 hex characters'
-  )
-    return res.status(400).json({ message: 'O id precisa ser hexadecimal' });
-  if (Book.isValid(firstName, lastName, email, password).error)
-    return res
-      .status(400)
-      .json({
-        message: `${
-          Book.isValid(firstName, lastName, email, password).message
-        }`,
-      });
-  await Book.updateUser(id, firstName, lastName, email, password);
-  res.status(200).json({ message: 'Usuário alterado com sucesso' });
-});
+app.use(midError);
 
-app.listen(port, () => console.log(`App listening on port ${port}!`));
+app.listen(port, () => console.log(`Example app listening on port ${port}!`));
