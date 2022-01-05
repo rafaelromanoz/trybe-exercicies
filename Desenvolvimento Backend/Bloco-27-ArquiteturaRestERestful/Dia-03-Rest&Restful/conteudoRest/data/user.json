@@ -1,0 +1,39 @@
+{
+	"random": 98,
+	"random float": 31.547,
+	"bool": false,
+	"date": "1987-07-12",
+	"regEx": "hellooooooooooooooooooo world",
+	"enum": "online",
+	"firstname": "Fayre",
+	"lastname": "Niccolo",
+	"city": "Sitka",
+	"country": "Christmas Island",
+	"countryCode": "TM",
+	"email uses current data": "Fayre.Niccolo@gmail.com",
+	"email from expression": "Fayre.Niccolo@yopmail.com",
+	"array": [
+		"Lorie",
+		"Darlleen",
+		"Addia",
+		"Sidoney",
+		"Micheline"
+	],
+	"array of objects": [
+		{
+			"index": 0,
+			"index start at 5": 5
+		},
+		{
+			"index": 1,
+			"index start at 5": 6
+		},
+		{
+			"index": 2,
+			"index start at 5": 7
+		}
+	],
+	"Lolita": {
+		"age": 19
+	}
+}
