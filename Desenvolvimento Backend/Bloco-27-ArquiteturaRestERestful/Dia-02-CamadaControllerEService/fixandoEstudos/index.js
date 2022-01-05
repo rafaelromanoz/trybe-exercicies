@@ -1,7 +1,20 @@
 const express = require('express');
 const app = express();
+const bodyParser = require('body-parser');
+const {
+  getAllPersonagemController,
+  adicionarPersonagem,
+} = require('./controller/personagemController');
+const error = require('./controller/middlewares/error');
 
-require('dotenv').config();
+app.use(bodyParser.json());
 
+app.get('/personagem', getAllPersonagemController);
 
-app.listen(process.env.PORT, () => console.log(`Example app listening on port ${process.env.PORT}!`))
+app.post('/personagem', adicionarPersonagem);
+
+app.use(error);
+
+app.listen(3000, () => {
+  console.log(`Example app listening on port ${3000}!`);
+});
