@@ -12,6 +12,7 @@ routerPlayer.get('/', getAllPlayersController);
 routerPlayer.post('/', createPlayerController);
 
 routerPlayer.put('/search', incrementAgePlayerController);
+
 // routerPlayer.get('/', getPlayerByIdController);
 
 
