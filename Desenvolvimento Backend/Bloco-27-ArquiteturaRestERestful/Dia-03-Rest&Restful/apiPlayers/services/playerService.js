@@ -3,9 +3,9 @@ const {
   getPlayerById,
   createPlayerModel,
   verifyExistsPlayer,
-  incrementGoals
+  incrementGoals,
 } = require('../models/playerModel');
-const {transformToNumber} = require('../utils/transformParam');
+const { transformToNumber } = require('../utils/transformParam');
 const Joi = require('joi');
 
 const getAllPlayersService = async () => {
@@ -16,15 +16,25 @@ const getAllPlayersService = async () => {
   return allPlayers;
 };
 
+const schemaBody = Joi.object({
+  name: Joi.string().required().messages({
+    'string.base': `"name" should be a type of 'text'`,
+    'string.min': `"name" should have a minimum length of {#limit}`,
+    'any.required': `"name" is a required field`,
+  }),
+  team: Joi.string().required(),
+  age: Joi.number().min(18).required(),
+  goals: Joi.number().required(),
+});
+
+
+
 const createPlayerService = async (id, body) => {
-  const { error } = Joi.object({
-    name: Joi.string().required(),
-    team: Joi.string().required(),
-    age: Joi.number().min(18).required(),
-    goals: Joi.number().required(),
-  }).validate(body);
+  const {error} = schemaBody.validate(body);
+  console.log(error);
   if (error) {
-    throw { error };
+    console.log(error);
+    throw { status: error.status, message: error.message };
   }
   const playerExists = await getPlayerById(body.name);
 
@@ -39,28 +49,28 @@ const createPlayerService = async (id, body) => {
 };
 
 const incrementPlayerService = async (queryParam) => {
-  const {error} = Joi.object({
+  const { error } = Joi.object({
     name: Joi.string().required(),
-    increment: Joi.number().required()
-  }).validate(queryParam)
-  if(error) {
-    throw {error}
+    increment: Joi.number().required(),
+  }).validate(queryParam);
+  if (error) {
+    throw { error };
   }
   const existsPlayer = await verifyExistsPlayer(queryParam);
-  if(!existsPlayer) {
-    throw {error: {statusCode: 404, message: 'Player not found'}}
+  if (!existsPlayer) {
+    throw { error: { statusCode: 404, message: 'Player not found' } };
   }
   const newObject = {
     name: queryParam.name,
-    increment: transformToNumber(queryParam.increment)
-  }
+    increment: transformToNumber(queryParam.increment),
+  };
 
   await incrementGoals(newObject);
   return newObject;
-}
+};
 
 module.exports = {
   getAllPlayersService,
   createPlayerService,
-  incrementPlayerService
+  incrementPlayerService,
 };
