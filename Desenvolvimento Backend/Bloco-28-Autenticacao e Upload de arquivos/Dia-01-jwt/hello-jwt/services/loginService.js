@@ -14,15 +14,8 @@ const findUserService = async (username, passwordBody) => {
   if (!userFound || userFound.password !== passwordBody) {
     throw createMessage(401, 'Usuário não existe ou senha inválida');
   }
-  
   if (username === 'admin' && passwordBody === 's3nh4S3gur4???') {
-    const { password, _id, ...userWithOutPassword } = userFound;
-    const objToken = {
-      ...userWithOutPassword,
-      admin: true,
-    };
-    const token = generateToken(objToken);
-    return token;
+    throw createMessage(401, 'Usuário não permitido');
   }
   const { password, _id, ...userWithOutPassword } = userFound;
   const objToken = {

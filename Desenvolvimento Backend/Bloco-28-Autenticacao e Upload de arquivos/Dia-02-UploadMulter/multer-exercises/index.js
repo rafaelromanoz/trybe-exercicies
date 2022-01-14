@@ -2,15 +2,15 @@ require('dotenv').config();
 const express = require('express');
 const cors = require('cors');
 const bodyParser = require('body-parser');
+const {directory, upload} = require('./config/upload');
+const { uploadMany }= require('./config/uploadMany');
 
 const { PORT } = process.env;
 
-const { createUserController } = require('./controllers/userController');
-const { loginController } = require('./controllers/loginController');
+const controllers = require('./controllers');
 const middlewares = require('./middlewares');
-const { getMeController } = require('./controllers/getMeController');
-const auth = require('./middlewares/auth');
-const { topSecret } = require('./controllers/topSecretController');
+const uploadController = require('./controllers/uploadController');
+const multipleUpdateController = require('./controllers/multipleController');
 
 const app = express();
 
@@ -25,11 +25,13 @@ app.use(
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-app.post('/users', createUserController);
-app.post('/login', loginController);
-app.get('/users/me', auth, getMeController);
-app.get('/top-secret', auth, topSecret);
-// app.post('/signup', auth, algo)
+app.use(express.static(directory));
+
+app.post('/uploads', upload.single('file') , uploadController);
+
+app.post('/multiple', uploadMany.array('files'), multipleUpdateController )
+
+app.get('/ping', controllers.ping);
 
 app.use(middlewares.error);
 
