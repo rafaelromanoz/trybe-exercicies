@@ -9,8 +9,6 @@ const app = express();
 
 app.use(bodyParser.json());
 
-app.use('/books', booksRouter);
+app.use('/book', booksRouter);
 
-
-
-app.listen(PORT, () => console.log(`O pai ta on na porta: ${PORT}!`))
+app.listen(PORT, () => console.log(`O pai ta on na porta: ${PORT}!`));
